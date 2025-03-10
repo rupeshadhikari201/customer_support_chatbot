@@ -1,0 +1,122 @@
+GOKAP InnoTech - Detailed Team Member Profiles
+Yared Tekle
+Position: Lead UI/UX Designer & Frontend Developer
+Joined: 2020 (Co-founder)
+Education: Bachelor's in Computer Science, Royal University of Bhutan; Certification in UI/UX Design from Interaction Design Foundation
+Background:
+Yared Tekle is one of the original co-founders of GOKAP InnoTech, bringing over 8 years of experience in user interface design and frontend development. Prior to founding GIT, Yared worked at several tech startups in Thimphu and briefly in a Singaporean digital agency, where he honed his skills in creating intuitive, accessible, and visually appealing digital experiences.
+Expertise:
+
+User experience research and testing
+Frontend architecture using React.js and Vue.js
+Responsive design implementation
+Design systems development
+Interactive prototyping
+Accessibility compliance
+
+Contributions to GIT:
+Yared has been instrumental in designing the entire user interface of the GOKAP platform, focusing on creating a seamless experience for both clients and freelancers. He established the company's design language and led the recent platform redesign that resulted in a 35% improvement in user engagement metrics. Yared personally oversees the design review process for all new features and regularly conducts usability testing sessions with users.
+Quote:
+"Design isn't just about making things look good—it's about making complex processes feel natural and intuitive. At GOKAP, we strive to remove friction from the freelancing experience so talent and opportunity can connect without barriers."
+Rupesh Sharma
+Position: Chief Technology Officer & Backend Developer
+Joined: 2020 (Co-founder)
+Education: Master's in Information Technology, Mumbai University; AWS Certified Solutions Architect
+Background:
+Rupesh brings strong technical leadership to GOKAP with over 10 years of experience in software architecture and development. Before co-founding GIT, he worked as a senior developer at a financial technology company in India and later as a technical consultant for several businesses in Bhutan's emerging tech sector. His passion for creating scalable, reliable systems drives GOKAP's technical infrastructure.
+Expertise:
+
+System architecture design
+Backend development with Node.js and Python
+Database optimization (MongoDB, PostgreSQL)
+API design and implementation
+DevOps practices and CI/CD pipelines
+Cloud infrastructure management (AWS)
+Payment system integration
+
+Contributions to GIT:
+Rupesh architected GOKAP's entire backend infrastructure, implementing security best practices and ensuring platform scalability. He developed the core payment processing system including the escrow functionality that has processed over 100 projects to date. Rupesh leads the technical development team and is currently spearheading the implementation of the AI-powered skill matching algorithm scheduled for Q1 2025.
+Quote:
+"Our platform for connecting clients with freelancers is a game-changer because we've built it on a foundation of security, reliability, and scalability. Technology should empower human connections, not complicate them."
+Sonam Wangchuk
+Position: Social Media Manager & Community Engagement Specialist
+Joined: 2021
+Education: Bachelor's in Marketing, Royal Thimphu College; Digital Marketing Certification from Google
+Background:
+Sonam joined GOKAP after two years at a prominent Bhutanese digital marketing agency. With a keen understanding of social media dynamics and content strategy, Sonam has helped build GOKAP's online presence from the ground up. Her approach combines data-driven campaign management with authentic community building.
+Expertise:
+
+Social media strategy development
+Community management
+Content calendar planning
+Engagement analytics
+User acquisition campaigns
+Influencer partnerships
+Brand voice development
+
+Contributions to GIT:
+Since joining the team, Sonam has grown GOKAP's social media following by 400% and established dedicated community groups for both freelancers and clients. She developed the company's content strategy and manages all communication channels, ensuring consistent messaging across platforms. Sonam also initiated and manages the weekly "Freelancer Spotlight" program that highlights top talent on the platform.
+Quote:
+"GIT's platform is designed to effortlessly link clients with freelancers, promoting effective collaboration and productivity. My role is to ensure both sides of our marketplace feel supported and heard, creating a community rather than just a transactional platform."
+Choki Dorji
+Position: Content Marketing Manager & Blog Editor
+Joined: 2022
+Education: Bachelor's in Journalism, Royal University of Bhutan; Certificate in Content Strategy from HubSpot Academy
+Background:
+Before joining GOKAP, Choki worked as a business journalist for Bhutan's leading newspaper and as a freelance content writer for various technology companies. His journalism background gives him a unique perspective on creating engaging, informative content that resonates with both technical and non-technical audiences.
+Expertise:
+
+Long-form content creation
+SEO optimization
+Editorial planning
+Brand storytelling
+Thought leadership content
+Technical writing
+Content localization
+
+Contributions to GIT:
+Choki oversees all content production for GOKAP, including the blog, knowledge base, and email newsletters. He created the company's editorial guidelines and content strategy, focusing on educational content that helps freelancers succeed and clients maximize their project outcomes. His "Freelancing in Bhutan" series has become a go-to resource for local professionals. Choki also writes detailed case studies of successful projects completed through the platform.
+Quote:
+"Stories drive connection in business. Through our content, we're not just explaining how our platform works—we're showcasing the real impact of digital freelancing on businesses and individual careers in Bhutan and beyond."
+Sudip Thapa
+Position: Product Manager & Customer Success Lead
+Joined: 2022
+Education: MBA from Delhi University; Certified Scrum Product Owner
+Background:
+Sudip brings a wealth of experience from his previous roles at several tech startups in India and Nepal. With 7 years of experience in product management and customer success, he has developed expertise in translating user needs into product features and ensuring high customer satisfaction. Before joining GOKAP, he led the product team for a fintech startup in Kathmandu.
+Expertise:
+
+Agile product development
+Customer journey mapping
+Feature prioritization
+User story creation
+A/B testing methodology
+Product analytics
+Client relationship management
+Customer onboarding processes
+
+Contributions to GIT:
+Since joining GOKAP, Sudip has restructured the product development process, implementing agile methodologies that have reduced feature deployment time by 40%. He created the platform's customer success program, which has improved client retention by 25%. Sudip leads the product roadmap planning and serves as the primary liaison between the development team and user community. He is currently leading the development of the new Team Collaboration Tools feature set.
+Quote:
+"At GOKAP, we measure success not by the features we ship, but by the problems we solve for our users. Every product decision begins with understanding our users' challenges and ends with measuring the real-world impact of our solutions."
+Abdul Rahman
+Position: Chief Financial Officer & Operations Director
+Joined: 2021
+Education: Master's in Finance from London School of Economics; Chartered Accountant
+Background:
+Abdul brings international financial expertise to GOKAP with over 12 years of experience in financial management and operations. Before joining GIT, he worked in investment banking in Dubai and later as a financial consultant for tech startups across South Asia. His experience in scaling operations for growing companies has been invaluable to GOKAP's expansion.
+Expertise:
+
+Financial strategy and planning
+Investment management
+Operational efficiency
+Risk assessment
+Compliance management
+Investor relations
+Budget allocation
+International payment systems
+
+Contributions to GIT:
+Abdul has been crucial in securing the 20K funding round for GOKAP and developing the company's financial infrastructure. He implemented the platform's fee structure and payment processing systems, ensuring compliance with international regulations. Abdul oversees all operational aspects of the business, including human resources, legal compliance, and office management. He has been instrumental in developing partnerships with local banks to facilitate easier payments for Bhutanese freelancers.
+Quote:
+"Financial sustainability is the foundation that allows innovation to flourish. At GOKAP, we're building not just a product but a financially sound business that can continue serving our community for years to come."

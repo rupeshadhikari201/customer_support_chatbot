@@ -1,0 +1,668 @@
+# GOKAP InnoTech - Comprehensive FAQ Answers
+
+## Account Management
+
+### 1. "How do I reset my password?"
+To reset your password on GOKAP InnoTech:
+1. Click on the "Login" button at the top right of the homepage
+2. Select "Forgot Password" below the login form
+3. Enter the email address associated with your account
+4. Check your email inbox for a password reset link (check spam/junk folders if not visible)
+5. Click the link and follow instructions to create a new password
+6. Use your new password to log in
+
+If you don't receive the reset email within 10 minutes, you can contact our support team at support@gokapinnotech.com for assistance.
+
+### 2. "Can I have both a freelancer and client account?"
+Yes, GOKAP InnoTech allows you to maintain both freelancer and client profiles under a single account. To set this up:
+
+1. Log in to your existing account
+2. Go to "Account Settings" from the dropdown menu
+3. Select "Profile Management"
+4. Click on "Add New Profile Type"
+5. Choose the profile type you want to add (Freelancer or Client)
+6. Complete the required information for the new profile
+7. Save changes
+
+You can easily switch between your freelancer and client profiles using the toggle in the top navigation bar once both are set up. This is especially useful for professionals who both offer services and hire others for different projects.
+
+### 3. "How do I verify my identity?"
+Identity verification on GOKAP InnoTech involves these steps:
+
+1. Log in to your account
+2. Navigate to "Account Settings" > "Verification Center"
+3. Select "Identity Verification"
+4. Choose your verification method:
+   - National ID/Passport verification
+   - Phone number verification
+   - Address verification
+5. Upload the required documents as specified
+6. Submit your verification request
+
+Our team typically reviews verification requests within 1-2 business days. You'll receive an email notification once your verification is complete. Verified accounts receive a special badge on their profile, which increases trust with potential clients or freelancers.
+
+### 4. "How can I deactivate my account temporarily?"
+To temporarily deactivate your GOKAP InnoTech account:
+
+1. Log in to your account
+2. Go to "Account Settings"
+3. Scroll down to "Account Status"
+4. Select "Temporarily Deactivate Account"
+5. Choose a reason for deactivation from the dropdown menu
+6. Specify the duration (1 week to 3 months)
+7. Confirm your decision
+
+During deactivation:
+- Your profile won't appear in search results
+- Ongoing projects will not be affected
+- You'll continue to receive essential emails
+- You can reactivate anytime by logging in again
+
+Note that if you have active projects or pending payments, you'll need to complete those before deactivation can take effect.
+
+### 5. "What documents are required for verification?"
+GOKAP InnoTech requires the following documents for account verification:
+
+**For Identity Verification:**
+- A valid government-issued photo ID (passport, national ID card, or driver's license)
+- A clear selfie holding your ID (following our guidelines)
+
+**For Address Verification:**
+- A utility bill (electricity, water, internet) dated within the last 3 months
+- A bank statement dated within the last 3 months
+- A government-issued document showing your address
+
+**For Business Accounts (additional):**
+- Business registration certificate
+- Tax identification document
+- Company letterhead or official document
+
+All documents must be:
+- Valid and not expired
+- Clearly visible and legible
+- In color (not black and white)
+- In JPG, PNG, or PDF format (max 5MB each)
+
+## Client-Specific
+
+### 1. "How do I post a new project?"
+To post a new project on GOKAP InnoTech:
+
+1. Log in to your client account
+2. Click on the "+ Post Project" button in your dashboard
+3. Complete the project posting form:
+   - Project title (clear and descriptive)
+   - Category and subcategory selection
+   - Detailed project description
+   - Required skills and experience
+   - Project budget (fixed price or hourly)
+   - Timeline and deadline
+   - Attachments (optional: briefs, examples, resources)
+4. Set additional preferences:
+   - NDA requirement
+   - Experience level needed
+   - Location preferences (if any)
+5. Review your project details
+6. Click "Post Project"
+
+Your project will be published immediately and visible to matching freelancers. You can edit your project details at any time before accepting proposals.
+
+### 2. "Can I invite specific freelancers to my project?"
+Yes, you can invite specific freelancers to your project on GOKAP InnoTech:
+
+1. Create and publish your project (or use an existing draft)
+2. From your project management page, select "Invite Freelancers"
+3. You can invite freelancers in several ways:
+   - Search by name or username of freelancers you know
+   - Browse recommended freelancers based on project requirements
+   - Select from freelancers you've worked with previously
+   - Import contacts from your favorites list
+4. Select the freelancers you wish to invite
+5. Personalize the invitation message (optional)
+6. Click "Send Invitations"
+
+Invited freelancers will receive a notification and email about your project invitation. They can then review your project and choose to submit a proposal or decline the invitation.
+
+### 3. "How do I release payment for completed work?"
+To release payment for completed work on GOKAP InnoTech:
+
+1. Log in to your client account
+2. Go to "My Projects" and select the relevant project
+3. Navigate to the "Payments" tab
+4. For milestone-based projects:
+   - Select the completed milestone
+   - Click "Review Submission"
+   - Approve the work if satisfactory
+   - Click "Release Payment"
+5. For hourly projects:
+   - Review the timesheet submitted by the freelancer
+   - Approve the hours if accurate
+   - Click "Release Payment"
+6. Confirm the payment release in the popup window
+7. (Optional) Leave feedback for the freelancer
+
+Once released, payments are processed and transferred to the freelancer's account within 24-48 hours, depending on their withdrawal method. You'll receive a payment receipt via email for your records.
+
+### 4. "What happens if I'm not satisfied with the work?"
+If you're not satisfied with the work delivered on GOKAP InnoTech:
+
+1. **Communication First:** Discuss your concerns directly with the freelancer through the project messaging system. Many issues can be resolved through clear communication.
+
+2. **Request Revisions:** If the work doesn't meet the agreed specifications:
+   - Go to "My Projects" and select the project
+   - Select "Request Revisions" on the submitted work
+   - Clearly explain the changes needed
+   - Set a reasonable timeline for revisions
+
+3. **Dispute Resolution:** If revision attempts don't resolve the issue:
+   - Go to "Project Actions" and select "Open Dispute"
+   - Provide detailed information about the problems
+   - Submit supporting evidence
+   - Our mediation team will review the case within 48 hours
+
+4. **Partial Payment Option:** For partially completed work, you can:
+   - Propose a partial payment that reflects the usable portion
+   - Negotiate this directly or through mediation
+
+5. **Refund Policy:** In cases where deliverables completely fail to meet agreed requirements:
+   - Full refunds may be issued for fixed-price projects
+   - Hourly projects may be eligible for partial refunds based on review
+
+GOKAP's goal is to ensure fair treatment for both clients and freelancers while maintaining platform integrity.
+
+### 5. "Can I request revisions to completed work?"
+Yes, you can request revisions to completed work on GOKAP InnoTech:
+
+1. Navigate to "My Projects" and select the relevant project
+2. Go to the "Submissions" tab and find the submission you want revised
+3. Click on "Request Revisions"
+4. In the revision request form:
+   - Be specific about what needs to be changed
+   - Reference the original requirements as needed
+   - Attach examples or marked-up files if helpful
+   - Set a reasonable deadline for the revisions
+5. Submit the revision request
+
+Important points about revisions:
+- The number of revision rounds should align with what was agreed upon in the initial contract
+- Additional revisions beyond the agreed amount may incur extra charges
+- Major changes that significantly alter the original scope may require a new milestone or contract adjustment
+- All revision requests and communications are logged for transparency
+- The revision timeline doesn't affect the original project deadline unless manually extended
+
+### 6. "How do I extend a project deadline?"
+To extend a project deadline on GOKAP InnoTech:
+
+1. Log in to your client account
+2. Go to "My Projects" and select the project that needs an extension
+3. Click on "Project Details" tab
+4. Select "Modify Project Terms"
+5. Scroll to "Project Timeline" section
+6. Click "Extend Deadline"
+7. Choose or enter the new deadline date
+8. Provide a reason for the extension (for record-keeping)
+9. Click "Submit Changes"
+
+The freelancer will receive a notification about the deadline extension and must accept it. Once accepted, the project timeline will be updated automatically in both your dashboards.
+
+Note that extending a deadline:
+- Doesn't change payment terms unless specifically modified
+- Doesn't affect milestone due dates unless those are individually adjusted
+- Is tracked in the project history for reference
+- May impact project priority settings in your dashboard
+
+### 7. "What fees does GIT charge for hiring freelancers?"
+GOKAP InnoTech (GIT) charges the following fees when hiring freelancers:
+
+**Client Service Fee:** 5% of the total project value
+- Applied to all payments made through the platform
+- Calculated and added at checkout when creating a project
+- Covers platform maintenance, payment processing, and customer support
+
+**Fee Breakdown Example:**
+- Project budget: Nu. 10,000
+- Client service fee (5%): Nu. 500
+- Total client payment: Nu. 10,500
+- Freelancer receives: Nu. 9,000 (after 10% freelancer service fee)
+
+**Additional Fee Information:**
+- No hidden charges beyond the stated 5% fee
+- Premium client accounts (Nu. 2,500/month) receive reduced fees of 3% on all projects
+- Enterprise accounts have custom fee structures based on volume
+- All fees are transparently displayed before payment confirmation
+- International payment processing fees (if applicable) are covered in the service fee
+
+The fee structure is designed to maintain platform quality while keeping costs reasonable for clients.
+
+## Freelancer-Specific
+
+### 1. "How do I apply for projects?"
+To apply for projects on GOKAP InnoTech as a freelancer:
+
+1. Log in to your freelancer account
+2. Navigate to "Find Projects" in the main menu
+3. Browse available projects or use filters to narrow your search:
+   - Category/skills
+   - Budget range
+   - Project duration
+   - Client rating
+   - Project type (hourly/fixed)
+
+4. Click on a project to view full details
+5. To apply, click "Submit Proposal"
+6. Complete the proposal form:
+   - Your bid amount (fixed price or hourly rate)
+   - Estimated completion time
+   - Cover letter explaining why you're the right fit
+   - Answers to any client questions
+   - Relevant samples from your portfolio
+   - Milestone suggestions (for larger projects)
+
+7. Review your proposal for clarity and professionalism
+8. Submit your proposal
+
+Tips for successful applications:
+- Customize each proposal to the specific project
+- Highlight relevant experience and skills
+- Be realistic about timeline and budget
+- Address the client's needs directly
+- Keep your profile and portfolio updated
+- Respond promptly if the client has questions
+
+### 2. "When and how will I get paid?"
+On GOKAP InnoTech, freelancers are paid according to the following process:
+
+**For Fixed-Price Projects:**
+1. Client funds the project/milestone in escrow before you start work
+2. You complete and submit the agreed deliverables
+3. The client reviews and approves the work
+4. Payment is released to your GOKAP account within 24 hours of approval
+5. Funds in your GOKAP account can be withdrawn using your preferred method
+
+**For Hourly Projects:**
+1. You log hours using the GOKAP time tracking tool
+2. Hours are submitted weekly (automatically on Sundays)
+3. Clients have 48 hours to review the timesheet
+4. If approved (or after 48 hours with no objection), payment is released to your account
+5. Funds become available for withdrawal
+
+**Payment Schedule:**
+- Work approved Monday-Friday: Funds available in 1-2 business days
+- Work approved on weekends: Processed on the next business day
+
+**Protection Measures:**
+- Escrow protection ensures clients have funds before you start work
+- Payment protection for properly tracked and logged hourly work
+- Dispute resolution available for payment issues
+
+**Service Fees:**
+- A 10% service fee is deducted from your earnings
+- Example: For a Nu. 10,000 project, you receive Nu. 9,000
+
+### 3. "Can I work on multiple projects simultaneously?"
+Yes, you can work on multiple projects simultaneously on GOKAP InnoTech. Here's what you should know:
+
+**Benefits of Multi-Project Management:**
+- Increase your income potential
+- Build a diverse portfolio faster
+- Maintain steady work during slow periods
+- Develop relationships with multiple clients
+
+**Platform Limitations:**
+- No technical limit to the number of concurrent projects
+- Maximum of 50 active proposals at any time
+- Project invitations don't count toward this limit
+
+**Best Practices:**
+- Be realistic about your capacity and availability
+- Update your calendar availability on your profile
+- Set clear expectations with each client about timeline
+- Use the workload management tools in your dashboard
+- Consider project complexity when taking on multiple jobs
+
+**Time Management Features:**
+- Project priority labeling
+- Deadline tracking calendar
+- Weekly capacity setting (hours available)
+- Automated status updates
+- Notification management for multiple projects
+
+**Important Note:** If you find yourself unable to meet deadlines, communicate proactively with clients and adjust your availability settings to avoid taking on too much work.
+
+### 4. "How do I withdraw my earnings?"
+To withdraw your earnings from GOKAP InnoTech:
+
+1. Log in to your freelancer account
+2. Navigate to "Finance" > "Withdraw Funds"
+3. Select your preferred withdrawal method:
+   - Bank transfer (processing time: 3-5 business days)
+   - PayPal (processing time: 24 hours)
+   - Wise/TransferWise (processing time: 1-2 business days)
+   - Mobile money (for Bhutanese users only, instant)
+   - Cryptocurrency (BTC, ETH, USDT) (processing time: 24 hours)
+
+4. Enter the amount you wish to withdraw
+5. Verify or update your payment details
+6. Click "Request Withdrawal"
+7. Confirm the transaction with the verification code sent to your email
+
+**Important Information:**
+- Minimum withdrawal amount: Nu. 500
+- Standard withdrawal fee: Nu. 100 (waived for amounts over Nu. 10,000)
+- Express withdrawal option available for 3% fee (processed within 6 hours)
+- Monthly free withdrawal: Premium freelancers get one fee-free withdrawal per month
+- Withdrawal requests made before 2 PM Bhutan time are processed same day
+- Tax forms may be required for certain withdrawal amounts (platform will notify you)
+- You can save multiple payment methods for different withdrawal options
+
+### 5. "How can I improve my visibility on the platform?"
+To improve your visibility on GOKAP InnoTech as a freelancer:
+
+**Profile Optimization:**
+- Complete your profile 100% (profiles with completion badges appear higher in search)
+- Use a professional profile photo
+- Create a compelling, keyword-rich title
+- Write a detailed bio highlighting your unique value proposition
+- Add relevant skills and tag expertise level for each
+- Upload portfolio items with detailed descriptions
+
+**Performance Factors:**
+- Maintain a high job success score (complete projects successfully and on time)
+- Earn positive reviews and testimonials from clients
+- Respond to messages quickly (response rate affects ranking)
+- Keep a high proposal acceptance rate
+- Complete the skills verification tests in your field
+
+**Activity Strategies:**
+- Submit proposals regularly (the algorithm favors active freelancers)
+- Be selective with proposals to maintain quality over quantity
+- Engage in the GOKAP community forums
+- Update your profile and portfolio quarterly
+- Set a competitive but fair rate for your services
+
+**Additional Visibility Boosters:**
+- Upgrade to a Premium Freelancer account (Nu. 1,000/month) for featured placement
+- Earn and display skill badges through platform certifications
+- Participate in GOKAP webinars and training (participants receive temporary visibility boosts)
+- Share success stories that may be featured in GIT newsletters
+- Set availability status to "Open to Work" when actively seeking projects
+
+### 6. "What happens if a client doesn't pay?"
+If a client doesn't pay for your work on GOKAP InnoTech, the platform provides several protections and resolution paths:
+
+**For Fixed-Price Projects:**
+1. All fixed-price projects require upfront funding to escrow before work begins
+2. Once you submit work and the client approves it, payment is automatically released
+3. If a client disappears after approval, payment is auto-released after 48 hours
+
+**For Hourly Projects:**
+1. Properly tracked hours using GIT's time tracking tool are covered by Payment Protection
+2. If a client disputes or refuses to pay properly logged hours, you can open a dispute
+
+**Dispute Resolution Process:**
+1. Navigate to the project in question
+2. Select "Payment Issue" under "Support"
+3. Choose "Client Payment Dispute"
+4. Provide details and evidence of completed work
+5. Submit the dispute
+
+**Resolution Timeline:**
+- Initial review within 48 hours
+- Mediation with both parties
+- Resolution typically within 7 business days
+- Decision based on contract terms and evidence provided
+
+**Payment Protection Fund:**
+GOKAP maintains a Protection Fund to cover valid claims when a client cannot or will not pay for properly completed work. This ensures freelancers are compensated for legitimate work even in worst-case scenarios.
+
+**Preventative Measures:**
+- Check client ratings and history before accepting projects
+- Use clear milestones for larger projects
+- Document all agreements in the platform's messaging system
+- Provide regular updates with evidence of progress
+- For off-platform clients, utilize GOKAP's safe payment integration
+
+### 7. "How are service fees calculated?"
+GOKAP InnoTech calculates service fees for freelancers as follows:
+
+**Standard Fee Structure:**
+- 10% of the total project value is deducted as the freelancer service fee
+- Applied to both hourly and fixed-price projects
+- Calculated on the pre-tax amount
+
+**Tiered Fee System:**
+For large projects, we implement a tiered fee system:
+- First Nu. 50,000 earned from a client: 10% fee
+- Nu. 50,001 to Nu. 200,000 earned from the same client: 7.5% fee
+- Nu. 200,001 and above earned from the same client: 5% fee
+
+**Example Calculations:**
+1. Small Project:
+   - Project value: Nu. 10,000
+   - Service fee (10%): Nu. 1,000
+   - You receive: Nu. 9,000
+
+2. Large Project with Tiered Fees:
+   - Project value: Nu. 100,000
+   - First Nu. 50,000: Nu. 5,000 fee (10%)
+   - Remaining Nu. 50,000: Nu. 3,750 fee (7.5%)
+   - Total fee: Nu. 8,750
+   - You receive: Nu. 91,250
+
+**Fee Reduction Programs:**
+- Premium Freelancer Subscription (Nu. 1,000/month): Reduces fees by 2% on all projects
+- Top-Rated Freelancers: Eligible for periodic fee-free projects
+- Long-term Client Relationships: Fee reductions apply automatically based on cumulative billings with the same client
+
+**Additional Fee Information:**
+- Withdrawal fees are separate from service fees
+- All fees are automatically calculated and displayed before accepting a project
+- Taxes may apply depending on your location and are calculated separately
+
+## Technical Issues
+
+### 1. "The website/app is loading slowly"
+If you're experiencing slow loading times on GOKAP InnoTech website or app, please try these troubleshooting steps:
+
+**Quick Fixes:**
+1. Refresh the page (F5 or browser refresh button)
+2. Clear your browser cache and cookies:
+   - Chrome: Settings > Privacy and Security > Clear browsing data
+   - Firefox: Options > Privacy & Security > Cookies and Site Data > Clear Data
+   - Safari: Preferences > Privacy > Manage Website Data > Remove All
+3. Try a different browser (Chrome, Firefox, Safari, Edge)
+4. Check your internet connection speed at speedtest.net
+5. Disable browser extensions that might interfere with loading
+
+**Mobile App Issues:**
+1. Close and restart the app
+2. Check for app updates in the App/Play Store
+3. Ensure your device has sufficient storage space
+4. Switch between WiFi and mobile data to identify connection issues
+5. Reinstall the app if problems persist
+
+**Advanced Troubleshooting:**
+1. Try accessing from a different device
+2. Use incognito/private browsing mode
+3. Check if the issue occurs at specific times of day
+4. Try a different network if possible
+
+**When to Contact Support:**
+If none of these solutions work, please contact our support team with:
+- Screenshots of the issue
+- Your device type and operating system
+- Browser name and version
+- Time when the issue occurred
+- Specific pages affected
+
+Our technical team monitors platform performance 24/7, but some local or regional issues may require individual troubleshooting.
+
+### 2. "I can't upload files to my project"
+If you're having trouble uploading files to your project on GOKAP InnoTech, please check these common issues and solutions:
+
+**File Restrictions:**
+- Maximum file size: 25MB per file
+- Supported file formats: PDF, DOC/DOCX, XLS/XLSX, JPG, PNG, GIF, ZIP, RAR, MP4, MP3
+- Maximum files per upload: 10 files
+
+**Troubleshooting Steps:**
+1. **Check your file size and format:**
+   - Ensure your file is under 25MB
+   - Verify you're using a supported file format
+   - Try compressing large files (using ZIP) before uploading
+
+2. **Browser issues:**
+   - Update your browser to the latest version
+   - Clear browser cache and cookies
+   - Try a different browser (Chrome, Firefox, Edge)
+   - Disable browser extensions, especially ad blockers
+
+3. **Connection issues:**
+   - Ensure stable internet connection
+   - Try a different network if possible
+   - For large files, use a wired connection instead of WiFi
+
+4. **Alternative upload methods:**
+   - Try uploading one file at a time instead of multiple
+   - Use the basic uploader option (click "Switch to basic uploader" link)
+   - Try uploading from a different device
+   - If sharing a cloud file (Google Drive, Dropbox), ensure proper permissions
+
+5. **Technical checks:**
+   - Ensure your device has sufficient storage space
+   - Restart your device and try again
+   - Check if your firewall or antivirus is blocking uploads
+
+If you've tried these steps and still cannot upload files, please contact support with details about:
+- The file type and size you're trying to upload
+- Screenshots of any error messages
+- Your device and browser information
+
+### 3. "Payment transaction failed"
+If your payment transaction failed on GOKAP InnoTech, please follow these troubleshooting steps:
+
+**Common Causes and Solutions:**
+
+1. **Card/Payment Method Issues:**
+   - Verify your card hasn't expired
+   - Ensure sufficient funds in your account
+   - Check if your card allows online/international transactions
+   - Confirm billing address matches your card information
+   - Try a different payment method if available
+
+2. **Verification Problems:**
+   - Some banks require additional verification for online transactions
+   - Check your phone for SMS verification requests
+   - Look for email verification from your bank
+   - Contact your bank to authorize the transaction
+
+3. **Platform-Related Issues:**
+   - Clear browser cache and cookies
+   - Use a private/incognito browsing window
+   - Try a different browser or device
+   - Ensure you're using a secure connection (https)
+
+4. **Regional Restrictions:**
+   - Some payment methods have geographical restrictions
+   - Check if your payment method is supported in your region
+   - Consider using an alternative payment method
+
+**Next Steps:**
+1. Wait 15-30 minutes before trying again (multiple rapid attempts may trigger security flags)
+2. Check your bank statement to ensure you weren't charged despite the error
+3. If you see a pending transaction but received an error, wait 24 hours for automatic reversal
+
+**Contact Information:**
+If the issue persists:
+- Email: payments@gokapinnotech.com
+- Include your account username, transaction reference (if available), date/time of attempt, and screenshot of any error messages
+- Do NOT share your full card details or security codes via email
+
+Our finance team is available Monday-Friday, 9 AM to 6 PM BT (Bhutan Time), with limited weekend support for urgent payment issues.
+
+### 4. "Notification system not working"
+If you're experiencing issues with GOKAP InnoTech's notification system, try these troubleshooting steps:
+
+**In-App Notifications:**
+1. Check your notification settings:
+   - Log in to your account
+   - Go to "Account Settings" > "Notifications"
+   - Ensure relevant notifications are enabled
+2. Refresh your notification center by clicking the bell icon twice
+3. Log out and log back in to refresh your session
+4. Clear browser cache or reinstall the mobile app
+5. Check your internet connection
+
+**Email Notifications:**
+1. Check your spam/junk folder for GOKAP emails
+2. Add support@gokapinnotech.com to your contacts/safe senders list
+3. Verify your email address is correct in "Account Settings" > "Personal Information"
+4. Confirm email notifications are enabled in your settings
+5. Check with your email provider for any filtering issues
+
+**Push Notifications (Mobile):**
+1. Ensure push notifications are enabled in your device settings:
+   - iOS: Settings > Notifications > GOKAP InnoTech
+   - Android: Settings > Apps > GOKAP InnoTech > Notifications
+2. Check that you have the latest app version installed
+3. Restart your device
+4. Toggle notifications off and back on in both app and device settings
+
+**If Problems Persist:**
+Please contact support with the following details:
+- Your account username
+- Device and operating system
+- App version (if using mobile)
+- Browser name and version (if using web)
+- Which specific notifications you're missing
+- Screenshot of your current notification settings
+
+Our team will investigate and might need to reset your notification preferences or check for account-specific issues.
+
+### 5. "Can't send messages to client/freelancer"
+If you're unable to send messages to a client or freelancer on GOKAP InnoTech, please try these solutions:
+
+**Basic Troubleshooting:**
+1. Refresh the page/app
+2. Check your internet connection
+3. Clear browser cache and cookies
+4. Log out and log back in
+5. Try a different browser or device
+
+**Specific Issues and Solutions:**
+
+**1. Message Limit Reached:**
+- Free accounts have a limit of 30 messages per day to non-connected users
+- Check if you've reached this limit in "Messages" > "Message Statistics"
+- Upgrade to a premium account for unlimited messaging
+- Wait until the next day when limits reset (midnight Bhutan time)
+
+**2. Account Restrictions:**
+- New accounts have messaging limitations for the first 48 hours
+- Accounts flagged for suspicious activity may have temporary restrictions
+- Check your account status in "Account Settings" > "Account Status"
+
+**3. Project Relationship Issues:**
+- If the project has been closed or canceled, messaging may be limited
+- For ended contracts, use "Contact Again" feature in the project history
+- Messages can be sent for up to 30 days after project completion
+
+**4. Technical Problems:**
+- Check if message contains prohibited content (excessive links, code, etc.)
+- Ensure message isn't excessively long (10,000 character limit)
+- Try sending without attachments first, then add them separately
+- Check if you're trying to send to a deactivated or suspended account
+
+**5. Using Message Templates:**
+- Some templates may not send if they contain placeholder text
+- Customize all [PLACEHOLDERS] before sending
+- Avoid using special characters in templates
+
+**Contact Support:**
+If none of these solutions work, please contact our support team with:
+- Screenshots of the error message
+- Name of the user you're trying to message
+- Project ID (if applicable)
+- Time when you attempted to send the message
+
+Support can check for system-wide messaging issues or specific blocks between accounts.

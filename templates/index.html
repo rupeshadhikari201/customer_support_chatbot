@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support Chat</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Loading Style -->
+    <link href="{{ url_for('static', filename='css/loading_style.css') }}" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 h-screen flex flex-col">
+    <!-- Header with experimental warning -->
+    <header class="bg-amber-400 text-gray-800 text-center py-2 font-medium">
+        <strong>This is experimental customer support. Use with caution!</strong>
+    </header>
+
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Sidebar on the left -->
+        <div id="sidebar" class="w-64 bg-white border-r border-gray-200 flex flex-col shadow-sm">
+            <div class="p-4 border-b border-gray-200">
+                <h5 class="font-semibold text-gray-800">Language Models</h5>
+            </div>
+            <ul id="model-list" class="flex-1 overflow-y-auto">
+                <li class="model-item border-b border-gray-100 px-4 py-3 cursor-pointer hover:bg-gray-50 transition-colors flex items-center"
+                    data-model="cohere">
+                    <div class="w-3 h-3 rounded-full bg-blue-500 mr-3"></div>
+                    <span>Cohere</span>
+                </li>
+                <li class="model-item border-b border-gray-100 px-4 py-3 cursor-pointer hover:bg-gray-50 transition-colors flex items-center"
+                    data-model="deepseek">
+                    <div class="w-3 h-3 rounded-full bg-purple-500 mr-3"></div>
+                    <span>Deepseek</span>
+                </li>
+                <li class="model-item border-b border-gray-100 px-4 py-3 cursor-pointer hover:bg-gray-50 transition-colors flex items-center"
+                    data-model="anthropic">
+                    <div class="w-3 h-3 rounded-full bg-green-500 mr-3"></div>
+                    <span>Anthropic</span>
+                </li>
+                <li class="model-item border-b border-gray-100 px-4 py-3 cursor-pointer hover:bg-gray-50 transition-colors flex items-center"
+                    data-model="mistral">
+                    <div class="w-3 h-3 rounded-full bg-red-500 mr-3"></div>
+                    <span>Mistral</span>
+                </li>
+                <li class="model-item border-b border-gray-100 px-4 py-3 cursor-pointer hover:bg-gray-50 transition-colors flex items-center"
+                    data-model="llama">
+                    <div class="w-3 h-3 rounded-full bg-yellow-500 mr-3"></div>
+                    <span>LLAMA</span>
+                </li>
+                <li class="model-item border-b border-gray-100 px-4 py-3 cursor-pointer hover:bg-gray-50 transition-colors flex items-center"
+                    data-model="gemini">
+                    <div class="w-3 h-3 rounded-full bg-teal-500 mr-3"></div>
+                    <span>Gemini</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Chat area -->
+        <div class="flex-1 flex flex-col">
+            <!-- Chat messages display -->
+            <div id="chat-box" class="flex-1 p-4 overflow-y-auto">
+                {% for message in messages %}
+                {% if message.sender == 'assistant' %}
+                <div class="flex mb-4 justify-start">
+                    <div class="message assistant-message bg-white rounded-lg shadow-sm p-3 max-w-3xl">
+                        <p class="text-gray-800">{{ message.text }}</p>
+                        {% if message.audio_url %}
+                        <div class="mt-2">
+                            <audio controls src="{{ message.audio_url }}" class="w-full"></audio>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% elif message.sender == 'user' %}
+                <div class="flex mb-4 justify-end">
+                    <div class="message user-message bg-blue-500 text-white rounded-lg shadow-sm p-3 max-w-3xl">
+                        <p>{{ message.text }}</p>
+                    </div>
+                </div>
+                {% else %}
+                <div class="system-message text-center text-sm text-gray-500 my-2">
+                    <p>{{ message.text }}</p>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <div id="loading_container" class="justify-center" style="visibility: hidden;">
+                <span class="loading_span"></span>
+                <span class="loading_span"></span>
+                <span class="loading_span"></span>
+            </div>
+
+            <!-- Chat Input fixed at the bottom -->
+            <div id="input-area" class="border-t border-gray-200 p-3 bg-white">
+                <div class="flex">
+                    <button id="clear-chat-btn"
+                        class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg mr-2 transition-colors flex items-center"
+                        type="button">
+                        <i class="fas fa-trash-alt mr-2"></i>Clear
+                    </button>
+                    <form id="chat-form" class="flex flex-1">
+                        <input id="chat-input" name="message" type="text"
+                            class="flex-1 border border-gray-300 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            placeholder="Type your message..." autocomplete="off" />
+                        <button class="bg-gray-100 hover:bg-gray-200 px-3 border border-gray-300 border-l-0"
+                            type="button" id="record-btn">
+                            <i class="fas fa-microphone text-gray-600"></i>
+                        </button>
+                        <button
+                            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-r-lg transition-colors"
+                            type="submit">Send</button>
+                        <input type="hidden" name="selected_model" id="selected_model" value="cohere" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

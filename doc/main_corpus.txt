@@ -1,0 +1,336 @@
+1. Company Overview
+GOKAP Innotech is a Bhutan-based startup founded to bridge the gap between freelancers and clients through an innovative platform that facilitates seamless collaboration. The company’s mission is "Tech Excellence, Customer Happiness," focusing on transforming lives through technology innovation 4. With over 100+ happy customers and 100+ completed projects, GOKAP has established itself as a trusted name in the tech industry.
+
+Full Name: GOKAP InnoTech (commonly referred to as GIT)
+Founded: 2020
+Industry: Technology, Freelance Marketplace
+Headquarters: Thimphu, Bhutan
+Contact Information:
+Phone: +97517570958
+Email: GIT@gokapinnotech.com
+Website: www.gokapinnotech.com
+
+2. Platform Description
+GOKAP InnoTech operates a digital marketplace connecting freelancers with clients. The platform facilitates project-based work where clients can post projects and freelancers can apply to complete these projects for compensation.
+User Types
+
+Clients:
+
+Businesses or individuals seeking professional services
+Can post projects, set budgets, and hire freelancers
+Review freelancer profiles, portfolios, and ratings before hiring
+Release payment upon satisfactory project completion
+
+
+Freelancers:
+
+Professionals offering services across various categories
+Create profiles highlighting skills, experience, and portfolio
+Browse and apply for available projects
+Complete work and receive payment through the platform
+
+
+
+3. Key Features
+Account Creation & Management
+
+Simple registration process requiring email verification
+Profile customization options
+Document verification for identity confirmation
+Account tiers: Basic, Premium, and Enterprise
+
+Project Management
+
+Project posting interface for clients
+Project discovery tool for freelancers
+Milestone tracking system
+Deadline management features
+File sharing capabilities
+
+Payment System
+
+Secure escrow payment protection
+Multiple payment methods (credit card, bank transfer, digital wallets)
+Currency conversion for international transactions
+Automatic invoicing system
+Payment release upon milestone completion
+
+Communication Tools
+
+In-platform messaging system
+Video conferencing integration
+Comment threads for project-specific discussions
+@mention functionality for team collaboration
+
+Review System
+
+5-star rating scale for both clients and freelancers
+Detailed feedback forms
+Portfolio building from completed projects
+Dispute resolution process
+
+4. Platform Metrics 
+
+Total Users: 100+ (as per website)
+Total Projects Completed: 100+ (as per website)
+Total Fundraise: 20K (as per website)
+Average Project Value: Nu. 15,000
+Average Project Completion Time: 14 days
+User Satisfaction Rate: 92%
+Platform Uptime: 99.8%
+
+5. Service Categories
+
+Web Development
+
+Frontend Development
+Backend Development
+Full-Stack Development
+E-commerce Development
+CMS Development
+
+
+Design
+
+UI/UX Design
+Graphic Design
+Logo Design
+Branding
+Illustration
+
+
+Content Creation
+
+Copywriting
+Content Writing
+Translation
+Editing
+Proofreading
+
+
+Digital Marketing
+
+SEO
+Social Media Marketing
+Email Marketing
+PPC Campaigns
+Content Marketing
+
+
+Business Support
+
+Virtual Assistance
+Data Entry
+Research
+Customer Support
+Administrative Tasks
+
+6. Fee Structure
+
+Freelancer Service Fee: 10% of project value
+Client Service Fee: 5% of project value
+Premium Account (Freelancer): Nu. 1,000/month
+Enterprise Solutions: Custom pricing
+Express Withdrawal: 3% of withdrawal amount
+
+
+7. Payment Process
+
+Client creates project and sets budget
+Funds are held in escrow
+Freelancer completes work and submits for review
+Client approves work
+Funds are released to freelancer (minus service fee)
+Both parties can leave reviews
+
+
+8. Platform Policies
+Refund Policy
+
+Full refund if no work has been started
+Partial refund for incomplete work
+No refund after work is approved
+14-day dispute window for quality issues
+
+Privacy Policy
+
+User data collection limited to platform functionality
+No selling of personal information to third parties
+Data retention period of 2 years after account closure
+Option to download personal data
+Regular security audits
+
+Terms of Service Highlights
+
+Intellectual property rights transfer upon payment
+Prohibition of off-platform payments
+Zero tolerance for fraudulent activities
+Account suspension for violation of terms
+Mandatory arbitration for disputes
+
+
+
+9. Recent Updates & News
+
+New mobile app launched (January 2025)
+Enhanced analytics dashboard (December 2024)
+Introduction of project milestone feature (November 2024)
+Platform redesign for improved user experience (October 2024)
+New payment methods added (September 2024)
+
+10. Troubleshooting Steps
+Account Access Issues
+
+Try resetting password via email link
+Clear browser cache and cookies
+Use incognito/private browsing mode
+Try a different browser
+Contact support if issues persist
+
+Payment Problems
+
+Verify card/bank details are correct
+Check account balance
+Ensure payment method is supported in your region
+Try an alternative payment method
+Contact your bank regarding any holds or restrictions
+
+File Upload Issues
+
+Check file size (max 25MB per file)
+Verify file format is supported
+Try compressing the file
+Upload files individually rather than in bulk
+Use a different browser or device
+
+
+11. Upcoming Featues
+1. AI-Powered Skill Matching
+Overview
+The AI-powered skill matching system will use machine learning algorithms to analyze freelancer profiles and client project requirements, creating more accurate matches between talent and opportunities.
+Key Features
+
+Semantic Skills Analysis: Goes beyond keyword matching to understand the context and relationship between skills
+Predictive Success Modeling: Uses historical project data to predict successful freelancer-client pairings
+Automated Skill Gap Identification: Suggests additional skills freelancers might acquire to qualify for more projects
+Dynamic Project Recommendations: Provides personalized project feeds for freelancers based on their skill profile
+Skill Verification Testing: Optional skill assessments to verify proficiency levels
+
+Benefits
+
+Clients find the most qualified freelancers faster
+Freelancers discover more relevant projects
+Reduced time-to-hire
+Higher project success rates
+More equitable opportunity distribution across the talent pool
+
+Timeline
+
+Beta launch: March 2025
+Full implementation: May 2025
+
+2. Team Collaboration Tools
+Overview
+A comprehensive suite of collaboration features designed to support multi-freelancer projects and improve coordination between clients and their hired talent.
+Key Features
+
+Team Workspaces: Dedicated spaces for project teams with shared resources
+Task Management System: Kanban-style boards for tracking progress and assignments
+Real-Time Document Collaboration: Multiple users can edit shared documents simultaneously
+Team Chat Channels: Topic-based communication channels for project teams
+Permission Management: Granular access controls for different team members
+Team Calendars: Shared schedules for important deadlines and meetings
+
+Benefits
+
+Streamlined communication within project teams
+Reduced email dependency
+Improved project visibility for all stakeholders
+More efficient handoffs between team members
+Better resource allocation and workload management
+
+Timeline
+
+Initial release: February 2025
+Feature expansions: April-June 2025
+
+3. Time Tracking Integration
+Overview
+A comprehensive time management system integrated directly into the platform to help freelancers track billable hours and allow clients to monitor project time expenditure.
+Key Features
+
+Automated Time Tracking: Desktop and mobile apps that track active work time
+Manual Time Entry: Options for manual logging of work hours
+Project Time Budgeting: Tools for clients to set and monitor time budgets
+Visual Time Reports: Graphical representations of time spent across tasks
+Billable vs. Non-billable Time: Differentiation between billable and non-billable activities
+Idle Time Detection: Automatic pausing when no activity is detected
+Integration with Payment System: Automatic invoice generation based on tracked time
+
+Benefits
+
+Transparent billing practices
+Improved project time estimation
+Enhanced freelancer productivity insights
+Better client budget management
+Simplified invoicing process
+
+Timeline
+
+Mobile app release: January 2025
+Desktop integration: March 2025
+Full reporting capabilities: April 2025
+
+4. Enhanced Portfolio Showcase
+Overview
+A redesigned portfolio system that allows freelancers to better highlight their work, process, and expertise to potential clients.
+Key Features
+
+Rich Media Portfolios: Support for images, videos, interactive elements, and case studies
+Work Process Documentation: Ability to showcase not just results but methodology
+Client Testimonial Integration: Direct embedding of client feedback into portfolio pieces
+Category-Specific Templates: Tailored portfolio layouts for different industries
+Before/After Comparisons: Interactive sliders to demonstrate transformation
+Project Impact Metrics: Ability to highlight measurable results achieved
+Featured Work Selection: Curate specific projects for different client types
+
+Benefits
+
+More compelling freelancer presentations
+Better demonstration of value and expertise
+Higher freelancer hiring rates
+More informed client decisions
+Competitive differentiation for freelancers
+
+Timeline
+
+New templates release: February 2025
+Interactive elements: April 2025
+Full feature implementation: May 2025
+
+5. Learning Resources Marketplace
+Overview
+An integrated educational platform where experts can offer courses, workshops, and resources for skill development, creating additional revenue streams for knowledge-sharers and upskilling opportunities for the community.
+Key Features
+
+Diverse Learning Formats: Courses, workshops, webinars, e-books, and templates
+Skill Pathway Mapping: Suggested learning paths for specific career goals
+Creator Tools: Course-building tools for subject matter experts
+Certification Programs: Completion certificates recognized within the platform
+Peer Learning Groups: Community-based learning cohorts
+Integration with Skill Matching: Direct connection between learning and job opportunities
+Subscription Options: Both pay-per-resource and subscription access models
+
+Benefits
+
+Continuous professional development for platform users
+New revenue streams for experienced freelancers
+Increased platform engagement and retention
+Bridge between learning and earning
+Ecosystem strengthening beyond project transactions
+
+Timeline
+
+Marketplace launch: March 2025
+Creator tools beta: April 2025
+Full certification integration: June 2025

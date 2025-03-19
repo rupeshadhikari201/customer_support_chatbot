@@ -5,6 +5,11 @@ langchain
 langchain-community
 langchain-huggingface
 langchain-cohere
+langchain-openai
+langchain-anthropic
+langchain-mistralai
+langchain-google-genai
+langchain-deepseek
 langgraph
 huggingface-hub
 sentence-transformers
@@ -13,3 +18,11 @@ cohere
 soundfile
 numpy
 uuid
+evaluate
+ragas
+datasets
+torch
+transformers
+python-dotenv
+matplotlib
+seaborn

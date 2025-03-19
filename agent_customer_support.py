@@ -4,18 +4,20 @@ from sqlalchemy import create_engine, text, inspect
 from langchain_core.runnables import Runnable, RunnableConfig
 from langchain_core.tools import tool
 import uuid
+import logging
 
 #################### Retriever ################
-from langchain_community.vectorstores import FAISS
-from langchain_community.document_loaders import TextLoader, DirectoryLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
-
+from rag_pipeline import rag_pipeline
 
 ################## Utilities ###########
 from langchain_core.messages import ToolMessage
 from langchain_core.runnables import RunnableLambda
 from langgraph.prebuilt import ToolNode
+from langchain_community.document_loaders import DirectoryLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_community.document_loaders import TextLoader
 
 ######### Assistant ##############
 from langchain_core.prompts import ChatPromptTemplate
@@ -26,10 +28,16 @@ from datetime import datetime
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, StateGraph, START
 from langgraph.prebuilt import tools_condition
+from typing import Annotated, TypedDict, List, Dict, Any
+from langchain_core.messages import AnyMessage
+from langgraph.graph.message import add_messages
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-# Constants
 os.environ["COHERE_API_KEY"] = os.getenv("COHERE_API_KEY")
 DB_URL = os.getenv("DB_URL")
 
@@ -75,13 +83,29 @@ def retrieve_company_info(query: str, k: int = 3) -> list:
     Returns:
         list: A list of relevant document contents matching the query.
     """
-    retriever = vector_db.as_retriever(search_kwargs={"k": k})
-    retrieved_docs = retriever.get_relevant_documents(query)
-
-    if not retrieved_docs:
-        return ["No relevant information found for the query."]
-
-    return [doc.page_content for doc in retrieved_docs]
+    try:
+        # Use the optimized RAG pipeline for retrieval
+        retrieved_docs = rag_pipeline.get_retrieval_content(query, k=k)
+        
+        if not retrieved_docs:
+            # If no documents found, try with a more general query
+            logger.info(f"No documents found for '{query}'. Trying with a more general query.")
+            broader_query = " ".join(query.split()[:3]) if len(query.split()) > 3 else query
+            retrieved_docs = rag_pipeline.get_retrieval_content(broader_query, k=k)
+            
+        if not retrieved_docs:
+            return ["No relevant information found for the query."]
+            
+        # Add source information if available
+        enhanced_docs = []
+        for i, doc in enumerate(retrieved_docs):
+            enhanced_docs.append(f"Document {i+1}:\n{doc}")
+            
+        return enhanced_docs
+        
+    except Exception as e:
+        logger.error(f"Error retrieving company info: {str(e)}")
+        return [f"Error retrieving information: {str(e)}"]
 
 @tool
 def get_user_detail(user_id: int) -> str:
@@ -255,7 +279,7 @@ def get_user_address(user_id: int) -> str:
     else:
         return f"No address found for user ID {user_id}"
 
-
+# Error handling for tools
 def handle_tool_error(state) -> dict:
     error = state.get("error")
     tool_calls = state["messages"][-1].tool_calls
@@ -269,11 +293,13 @@ def handle_tool_error(state) -> dict:
         ]
     }
 
+# Create a tool node with fallback
 def create_tool_node_with_fallback(tools: list) -> dict:
     return ToolNode(tools).with_fallbacks(
         [RunnableLambda(handle_tool_error)], exception_key="error"
     )
 
+# Print event
 def _print_event(event: dict, _printed: set, max_length=1500):
     current_state = event.get("dialog_state")
     if current_state:
@@ -290,8 +316,6 @@ def _print_event(event: dict, _printed: set, max_length=1500):
             _printed.add(message.id)
 
 
-
-########### State ##########
 from typing import Annotated
 from typing_extensions import TypedDict
 from langgraph.graph.message import AnyMessage, add_messages
@@ -299,7 +323,6 @@ from langgraph.graph.message import AnyMessage, add_messages
 class State(TypedDict):
     messages: Annotated[list[AnyMessage], add_messages]
 
-######### Assistant ##############
 
 class Assistant:
     def __init__(self, runnable: Runnable):

@@ -5,4 +5,7 @@ __pycache__/
 conversational-sounds
 denv
 .vscode
-
+static/audio
+static/
+.history
+evaluation_results

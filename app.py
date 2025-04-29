@@ -13,7 +13,7 @@ import threading
 from agent_customer_support import query_llm as agent_query_llm
 # from tts import generate_audio
 from rag_pipeline import rag_pipeline
-from rag_evaluation import rag_evaluator
+# from rag_evaluation import rag_evaluator
 
 # Import LLM modules
 from langchain_cohere import ChatCohere

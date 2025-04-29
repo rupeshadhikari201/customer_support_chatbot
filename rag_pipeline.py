@@ -1,11 +1,12 @@
 import os
 from dotenv import load_dotenv
 import logging
-from typing import List, Dict, Any, Optional
+from typing import List
 
 from langchain_community.document_loaders import TextLoader, DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_cohere import CohereEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_community.retrievers import BM25Retriever
 from langchain.retrievers import EnsembleRetriever
@@ -20,12 +21,14 @@ load_dotenv()
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
+os.environ['COHERE_API_KEY'] = os.getenv("COHERE_API_KEY")
+
 class OptimizedRAGPipeline:
     def __init__(self, 
                  docs_path: str = 'doc/', 
                  chunk_size: int = 500, 
                  chunk_overlap: int = 100,
-                 embedding_model: str = 'sentence-transformers/all-mpnet-base-v2',
+                 embedding_model: str = 'embed-english-v3.0',
                  use_reranker: bool = True,
                  use_compression: bool = True):
         """
@@ -35,7 +38,7 @@ class OptimizedRAGPipeline:
             docs_path (str): Path to the documents directory
             chunk_size (int): Size of document chunks
             chunk_overlap (int): Overlap between chunks
-            embedding_model (str): HuggingFace embedding model name
+            embedding_model (str): Cohere embedding model name (note: uses 'model' parameter in newer versions)
             use_reranker (bool): Whether to use reranking
             use_compression (bool): Whether to use contextual compression
         """
@@ -84,11 +87,18 @@ class OptimizedRAGPipeline:
         """Initialize the embedding model"""
         logger.info(f"Initializing embeddings with model: {self.embedding_model}")
         try:
-            return HuggingFaceEmbeddings(model_name=self.embedding_model)
+            # Updated: Use 'model' parameter instead of 'model_name'
+            return CohereEmbeddings(model=self.embedding_model)
         except Exception as e:
             logger.error(f"Error initializing embeddings: {str(e)}")
             # Fallback to a simpler model if the specified one fails
-            return HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2')
+            try:
+                # Try with the updated parameter name
+                return CohereEmbeddings(model="embed-english-v3.0")
+            except Exception as fallback_error:
+                logger.error(f"Fallback embeddings also failed: {str(fallback_error)}")
+                # Last resort: try HuggingFace embeddings
+                return HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
             
     def _create_vector_store(self):
         """Create a vector store from documents and embeddings"""
@@ -119,12 +129,23 @@ class OptimizedRAGPipeline:
         # Add contextual compression if enabled
         if self.use_compression:
             try:
-                # Use LLM to extract relevant parts of retrieved documents
-                llm = ChatOpenAI(
-                    openai_api_key = os.getenv('OPENROUTER_API_KEY'),
-        openai_api_base="https://openrouter.ai/api/v1",
-                    temperature=0, 
-                    model="gpt-3.5-turbo")
+                # Use LLM for compression - use a standard model that doesn't need headers
+                # Avoid OpenRouter since it's causing issues with headers parameter
+                try:
+                    # First try with Cohere which we know works
+                    from langchain_cohere import ChatCohere
+                    llm = ChatCohere(
+                        cohere_api_key=os.getenv('COHERE_API_KEY'),
+                        temperature=0
+                    )
+                except Exception:
+                    # Fall back to a simpler model if needed
+                    from langchain_community.llms import HuggingFaceHub
+                    llm = HuggingFaceHub(
+                        repo_id="google/flan-t5-small",
+                        huggingfacehub_api_token=os.getenv('HF_TOKEN')
+                    )
+                
                 compressor = LLMChainExtractor.from_llm(llm)
                 
                 return ContextualCompressionRetriever(
@@ -150,13 +171,15 @@ class OptimizedRAGPipeline:
         """
         logger.info(f"Retrieving documents for query: {query}")
         try:
-            return self.retriever.get_relevant_documents(query)
+            # Use the new invoke method instead of deprecated get_relevant_documents
+            return self.retriever.invoke(query)
         except Exception as e:
             logger.error(f"Error retrieving documents: {str(e)}")
             # Fallback to simple vector retrieval if ensemble fails
             try:
                 return self.vector_store.similarity_search(query, k=k)
-            except:
+            except Exception as inner_e:
+                logger.error(f"Fallback retrieval also failed: {str(inner_e)}")
                 return []
                 
     def get_retrieval_content(self, query: str, k: int = 4) -> List[str]:

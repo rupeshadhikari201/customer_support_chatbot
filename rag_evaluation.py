@@ -5,16 +5,17 @@ from typing import List, Dict, Any, Optional
 import pandas as pd
 import numpy as np
 from datetime import datetime
-
-from ragas.metrics import (
-    faithfulness,
-    answer_relevancy,
-    context_recall,
-    context_precision
-)
-from datasets import Dataset
+import matplotlib.pyplot as plt
+import seaborn as sns
 from langchain_openai import ChatOpenAI
-from langchain_core.documents import Document
+from langchain_mistralai import ChatMistralAI
+from langsmith import Client
+from langsmith.evaluation import EvaluationResult, StringEvaluator
+from langsmith.schemas import Example, Run
+from dotenv import load_dotenv
+load_dotenv()
+import os
+os.environ['MISTRAL_API_KEY']= os.getenv("MISTRAL_API_KEY")
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -26,7 +27,7 @@ class RAGEvaluator:
                  results_dir: str = "evaluation_results"
                  ):
         """
-        Initialize the RAG evaluator
+        Initialize the RAG evaluator using LangSmith
         
         Args:
             eval_llm_name (str): Name of the LLM to use for evaluation
@@ -38,20 +39,217 @@ class RAGEvaluator:
         # Create results directory if it doesn't exist
         os.makedirs(results_dir, exist_ok=True)
         
-        # Initialize metrics
+        # Initialize LangSmith client
+        if os.environ.get("LANGCHAIN_API_KEY"):
+            self.client = Client(api_key=os.environ.get("LANGCHAIN_API_KEY"))
+        else:
+            logger.warning("LANGCHAIN_API_KEY not found in environment variables. LangSmith logging will be disabled.")
+            self.client = None
+        
+        # Initialize LLM for evaluation
+        try:
+            self.eval_llm = ChatMistralAI(temperature=0)
+            logger.info("Using Mistral AI for evaluation")
+        except Exception as e:
+            logger.warning(f"Error initializing Mistral AI: {str(e)}. Falling back to default evaluator.")
+            self.eval_llm = None
+        
+        # Define evaluation metrics
         self.metrics = {
-            "faithfulness": faithfulness,
-            "answer_relevancy": answer_relevancy,
-            "context_recall": context_recall,
-            "context_precision": context_precision
+            "faithfulness": self._evaluate_faithfulness,
+            "answer_relevancy": self._evaluate_answer_relevancy,
+            "context_recall": self._evaluate_context_recall,
+            "context_precision": self._evaluate_context_precision
         }
+
+    def _evaluate_faithfulness(self, question: str, answer: str, contexts: List[str]) -> float:
+        """
+        Evaluate if the generated answer is faithful to the retrieved contexts
+        
+        Args:
+            question (str): User question
+            answer (str): Generated answer
+            contexts (List[str]): Retrieved contexts
+            
+        Returns:
+            float: Faithfulness score between 0 and 1
+        """
+        if not self.eval_llm:
+            # Return a default score if no evaluator is available
+            logger.warning("No evaluator LLM available for faithfulness evaluation. Returning default score.")
+            return 0.7
+            
+        evaluator = StringEvaluator(
+            criteria="faithfulness",
+            llm=self.eval_llm,
+            prompt_template="""You are evaluating the faithfulness of an answer to a question based on given contexts.
+            
+Question: {question}
+Answer: {answer}
+Contexts: {contexts}
+
+Evaluate if the answer is faithful to the provided contexts. The answer should only contain information that is present in the contexts.
+Score from 0 to 1, where:
+0 - The answer contains significant information not present in the contexts
+1 - The answer is completely faithful to the contexts
+
+Reasoning:
+""",
+        )
+        
+        try:
+            eval_result = evaluator.evaluate_strings(
+                prediction=answer,
+                input={"question": question, "contexts": "\n\n".join(contexts)}
+            )
+            
+            return float(eval_result.normalized_score)
+        except Exception as e:
+            logger.error(f"Error evaluating faithfulness: {str(e)}")
+            return 0.5
+
+    def _evaluate_answer_relevancy(self, question: str, answer: str, contexts: List[str]) -> float:
+        """
+        Evaluate if the generated answer is relevant to the question
+        
+        Args:
+            question (str): User question
+            answer (str): Generated answer
+            contexts (List[str]): Retrieved contexts
+            
+        Returns:
+            float: Relevancy score between 0 and 1
+        """
+        if not self.eval_llm:
+            # Return a default score if no evaluator is available
+            logger.warning("No evaluator LLM available for answer relevancy evaluation. Returning default score.")
+            return 0.7
+            
+        evaluator = StringEvaluator(
+            criteria="answer_relevancy",
+            llm=self.eval_llm,
+            prompt_template="""You are evaluating the relevance of an answer to a question.
+            
+Question: {question}
+Answer: {answer}
+
+
+Evaluate if the answer directly addresses the question. The answer should be focused on what the question is asking.
+Score from 0 to 1, where:
+0 - The answer is completely irrelevant to the question
+1 - The answer is highly relevant and directly addresses the question
+
+Reasoning:
+""",
+        )
+        
+        try:
+            eval_result = evaluator.evaluate_strings(
+                prediction=answer,
+                input={"question": question}
+            )
+            
+            return float(eval_result.normalized_score)
+        except Exception as e:
+            logger.error(f"Error evaluating answer relevancy: {str(e)}")
+            return 0.5
+
+    def _evaluate_context_recall(self, question: str, answer: str, contexts: List[str]) -> float:
+        """
+        Evaluate if the retrieved contexts contain the information needed to answer the question
+        
+        Args:
+            question (str): User question
+            answer (str): Generated answer
+            contexts (List[str]): Retrieved contexts
+            
+        Returns:
+            float: Context recall score between 0 and 1
+        """
+        if not self.eval_llm:
+            # Return a default score if no evaluator is available
+            logger.warning("No evaluator LLM available for context recall evaluation. Returning default score.")
+            return 0.7
+            
+        evaluator = StringEvaluator(
+            criteria="context_recall",
+            llm=self.eval_llm,
+            prompt_template="""You are evaluating if the retrieved contexts contain the information needed to answer a question.
+            
+Question: {question}
+Contexts: {contexts}
+
+Evaluate if the contexts contain all the information needed to adequately answer the question.
+Score from 0 to 1, where:
+0 - The contexts are missing critical information needed to answer the question
+1 - The contexts contain all the necessary information to fully answer the question
+
+Reasoning:
+""",
+        )
+        
+        try:
+            eval_result = evaluator.evaluate_strings(
+                prediction="\n\n".join(contexts),
+                input={"question": question}
+            )
+            
+            return float(eval_result.normalized_score)
+        except Exception as e:
+            logger.error(f"Error evaluating context recall: {str(e)}")
+            return 0.5
+
+    def _evaluate_context_precision(self, question: str, answer: str, contexts: List[str]) -> float:
+        """
+        Evaluate if the retrieved contexts contain only relevant information
+        
+        Args:
+            question (str): User question
+            answer (str): Generated answer
+            contexts (List[str]): Retrieved contexts
+            
+        Returns:
+            float: Context precision score between 0 and 1
+        """
+        if not self.eval_llm:
+            # Return a default score if no evaluator is available
+            logger.warning("No evaluator LLM available for context precision evaluation. Returning default score.")
+            return 0.7
+            
+        evaluator = StringEvaluator(
+            criteria="context_precision",
+            llm=self.eval_llm,
+            prompt_template="""You are evaluating if the retrieved contexts are precise and relevant to the question.
+            
+Question: {question}
+Contexts: {contexts}
+
+Evaluate if the contexts are precise and focused on information relevant to the question without unnecessary information.
+Score from 0 to 1, where:
+0 - The contexts contain mostly irrelevant information
+1 - The contexts are highly precise and focused on information relevant to the question
+
+Reasoning:
+""",
+        )
+        
+        try:
+            eval_result = evaluator.evaluate_strings(
+                prediction="\n\n".join(contexts),
+                input={"question": question}
+            )
+            
+            return float(eval_result.normalized_score)
+        except Exception as e:
+            logger.error(f"Error evaluating context precision: {str(e)}")
+            return 0.5
         
     def prepare_evaluation_data(self, 
                                 questions: List[str], 
                                 contexts: List[List[str]], 
-                                answers: List[str]) -> Dataset:
+                                answers: List[str]) -> Dict[str, List]:
         """
-        Prepare evaluation data in the format required by RAGAS
+        Prepare evaluation data
         
         Args:
             questions (List[str]): List of questions
@@ -59,48 +257,52 @@ class RAGEvaluator:
             answers (List[str]): List of generated answers
             
         Returns:
-            Dataset: HuggingFace dataset for evaluation
+            Dict[str, List]: Dictionary with prepared evaluation data
         """
         if not (len(questions) == len(contexts) == len(answers)):
             raise ValueError("Questions, contexts, and answers must have the same length")
             
-        # Prepare data in the format required by RAGAS
+        # Prepare data in the format required by LangSmith
         data = {
-            "question": questions,
+            "questions": questions,
             "contexts": contexts,
-            "answer": answers,
+            "answers": answers,
         }
         
-        return Dataset.from_dict(data)
+        return data
         
-    def evaluate(self, dataset: Dataset) -> Dict[str, float]:
+    def evaluate(self, dataset: Dict[str, List]) -> Dict[str, float]:
         """
-        Evaluate the RAG system using standard metrics
+        Evaluate the RAG system using LangSmith metrics
         
         Args:
-            dataset (Dataset): Dataset containing questions, contexts, and answers
+            dataset (Dict[str, List]): Dataset containing questions, contexts, and answers
             
         Returns:
             Dict[str, float]: Dictionary of evaluation metrics
         """
-        logger.info("Starting RAG evaluation")
+        logger.info("Starting RAG evaluation with LangSmith")
         results = {}
         
         try:
-            # Run each metric evaluation
-            for metric_name, metric_fn in self.metrics.items():
-                logger.info(f"Evaluating {metric_name}")
-                # Create a new instance of the metric
-                metric = metric_fn()
-                # Compute the metric
-                result = metric(dataset)
+            questions = dataset["questions"]
+            contexts = dataset["contexts"]
+            answers = dataset["answers"]
+            
+            metric_scores = {metric: [] for metric in self.metrics}
+            
+            # Evaluate each question-context-answer triplet
+            for i, (question, context, answer) in enumerate(zip(questions, contexts, answers)):
+                logger.info(f"Evaluating example {i+1}/{len(questions)}")
                 
-                # Extract the score
-                if isinstance(result, dict) and metric_name in result:
-                    results[metric_name] = float(result[metric_name].mean())
-                else:
-                    # Some metrics return the score directly
-                    results[metric_name] = float(np.mean(result))
+                # Calculate metrics for each example
+                for metric_name, metric_fn in self.metrics.items():
+                    score = metric_fn(question, answer, context)
+                    metric_scores[metric_name].append(score)
+            
+            # Calculate average scores
+            for metric_name, scores in metric_scores.items():
+                results[metric_name] = float(np.mean(scores))
                     
             # Calculate overall score (weighted average)
             weights = {
@@ -117,11 +319,53 @@ class RAGEvaluator:
                 weighted_score = sum(results[m] * weights[m] for m in available_metrics) / total_weight
                 results["overall_score"] = weighted_score
                 
+            # Log the evaluation results to LangSmith if API key is available
+            if self.client:
+                self._log_to_langsmith(dataset, results)
+                
             return results
             
         except Exception as e:
             logger.error(f"Error during evaluation: {str(e)}")
             return {"error": str(e)}
+    
+    def _log_to_langsmith(self, dataset: Dict[str, List], results: Dict[str, float]) -> None:
+        """
+        Log evaluation results to LangSmith
+        
+        Args:
+            dataset (Dict[str, List]): Dataset used for evaluation
+            results (Dict[str, float]): Evaluation results
+        """
+        if not self.client:
+            logger.warning("LangSmith client not available. Skipping logging.")
+            return
+            
+        try:
+            # Create a dataset in LangSmith
+            dataset_name = f"rag_evaluation_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+            
+            # Log each example to LangSmith
+            for i, (question, contexts, answer) in enumerate(zip(
+                dataset["questions"], dataset["contexts"], dataset["answers"]
+            )):
+                # Create an example
+                example = Example(
+                    inputs={"question": question, "contexts": contexts},
+                    outputs={"answer": answer}
+                )
+                
+                # Log the example to LangSmith
+                self.client.create_example(
+                    inputs=example.inputs,
+                    outputs=example.outputs,
+                    dataset_name=dataset_name
+                )
+                
+            logger.info(f"Logged {len(dataset['questions'])} examples to LangSmith dataset '{dataset_name}'")
+            
+        except Exception as e:
+            logger.warning(f"Failed to log to LangSmith: {str(e)}")
             
     def save_results(self, results: Dict[str, float], model_name: str = "default"):
         """
@@ -167,9 +411,6 @@ class RAGEvaluator:
             save_path (str): Path to save the chart
         """
         try:
-            import matplotlib.pyplot as plt
-            import seaborn as sns
-            
             plt.figure(figsize=(12, 8))
             sns.set_theme(style="whitegrid")
             

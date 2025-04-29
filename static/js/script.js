@@ -8,6 +8,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const loadingContainer = document.getElementById("loading_container");
   const clearChatBtn = document.getElementById("clear-chat-btn");
 
+  // Tab elements
+  const chatTab = document.getElementById("chat-tab");
+  const resultsTab = document.getElementById("results-tab");
+  const chatPanel = document.getElementById("chat-panel");
+  const resultsPanel = document.getElementById("results-panel");
+
+  // Evaluation elements
+  const evaluateBtn = document.getElementById("evaluate-btn");
+  const compareModelsBtn = document.getElementById("compare-models-btn");
+  const noResultsDiv = document.getElementById("no-results");
+  const resultsContainerDiv = document.getElementById("results-container");
+  const comparisonContainerDiv = document.getElementById("comparison-container");
+  const evaluationLoadingDiv = document.getElementById("evaluation-loading");
+
+  // Charts
+  let metricsChart = null;
+  let comparisonChart = null;
+
   let recognition;
   let isRecording = false;
   let recognitionTimeout;
@@ -15,122 +33,251 @@ document.addEventListener("DOMContentLoaded", function () {
   // Set initial active model
   document.querySelector(`[data-model="${selectedModelInput.value}"]`).classList.add('bg-gray-100');
 
-  // Add evaluation button to the UI
-  const inputArea = document.getElementById("input-area");
-  const evaluateBtn = document.createElement("button");
-  evaluateBtn.id = "evaluate-btn";
-  evaluateBtn.className = "bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg mr-2 transition-colors flex items-center";
-  evaluateBtn.innerHTML = '<i class="fas fa-chart-bar mr-2"></i>Evaluate';
-  inputArea.querySelector(".flex").prepend(evaluateBtn);
+  // Tab switching functionality
+  chatTab.addEventListener("click", function () {
+    chatTab.classList.add("text-indigo-600", "border-b-2", "border-indigo-600");
+    chatTab.classList.remove("text-gray-500");
+    resultsTab.classList.remove("text-indigo-600", "border-b-2", "border-indigo-600");
+    resultsTab.classList.add("text-gray-500");
 
-  // Add compare models button
-  const compareBtn = document.createElement("button");
-  compareBtn.id = "compare-btn";
-  compareBtn.className = "bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg mr-2 transition-colors flex items-center";
-  compareBtn.innerHTML = '<i class="fas fa-balance-scale mr-2"></i>Compare';
-  inputArea.querySelector(".flex").prepend(compareBtn);
+    chatPanel.classList.remove("hidden");
+    resultsPanel.classList.add("hidden");
+  });
+
+  resultsTab.addEventListener("click", function () {
+    resultsTab.classList.add("text-indigo-600", "border-b-2", "border-indigo-600");
+    resultsTab.classList.remove("text-gray-500");
+    chatTab.classList.remove("text-indigo-600", "border-b-2", "border-indigo-600");
+    chatTab.classList.add("text-gray-500");
+
+    resultsPanel.classList.remove("hidden");
+    chatPanel.classList.add("hidden");
+  });
 
   // Evaluation button click handler
   evaluateBtn.addEventListener("click", function () {
-    Swal.fire({
-      title: 'Evaluating RAG System',
-      text: 'Please wait while we evaluate the system...',
-      allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
+    // Show evaluation loading indicator
+    noResultsDiv.classList.add("hidden");
+    resultsContainerDiv.classList.add("hidden");
+    comparisonContainerDiv.classList.add("hidden");
+    evaluationLoadingDiv.classList.remove("hidden");
 
-        fetch("/evaluate_rag", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" }
-        })
-          .then(response => response.json())
-          .then(data => {
-            if (data.error) {
-              Swal.fire({
-                title: 'Evaluation Error',
-                text: data.error,
-                icon: 'error'
-              });
-              return;
-            }
+    // Switch to results tab
+    resultsTab.click();
 
-            // Format results for display
-            let resultsHtml = '<div class="text-left">';
-            for (const [metric, value] of Object.entries(data.results)) {
-              resultsHtml += `<p><strong>${metric}:</strong> ${value.toFixed(4)}</p>`;
-            }
-            resultsHtml += '</div>';
+    fetch("/evaluate_rag", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Hide loading indicator
+        evaluationLoadingDiv.classList.add("hidden");
 
-            Swal.fire({
-              title: 'Evaluation Results',
-              html: resultsHtml,
-              icon: 'success'
-            });
-          })
-          .catch(error => {
-            console.error("Evaluation error:", error);
-            Swal.fire({
-              title: 'Evaluation Failed',
-              text: 'An error occurred during evaluation',
-              icon: 'error'
-            });
+        if (data.error) {
+          Swal.fire({
+            title: 'Evaluation Error',
+            text: data.error,
+            icon: 'error'
           });
-      }
-    });
+          noResultsDiv.classList.remove("hidden");
+          return;
+        }
+
+        // Update results UI
+        updateEvaluationResults(data);
+
+        // Show results container
+        resultsContainerDiv.classList.remove("hidden");
+      })
+      .catch(error => {
+        console.error("Evaluation error:", error);
+        evaluationLoadingDiv.classList.add("hidden");
+        noResultsDiv.classList.remove("hidden");
+
+        Swal.fire({
+          title: 'Evaluation Failed',
+          text: 'An error occurred during evaluation',
+          icon: 'error'
+        });
+      });
   });
 
   // Compare models button click handler
-  compareBtn.addEventListener("click", function () {
-    Swal.fire({
-      title: 'Comparing Models',
-      text: 'Please wait while we compare the models...',
-      allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
+  compareModelsBtn.addEventListener("click", function () {
+    // Show evaluation loading indicator
+    noResultsDiv.classList.add("hidden");
+    resultsContainerDiv.classList.add("hidden");
+    comparisonContainerDiv.classList.add("hidden");
+    evaluationLoadingDiv.classList.remove("hidden");
 
-        fetch("/compare_models", {
-          method: "GET",
-          headers: { "Content-Type": "application/json" }
-        })
-          .then(response => response.json())
-          .then(data => {
-            if (data.error) {
-              Swal.fire({
-                title: 'Comparison Error',
-                text: data.error,
-                icon: 'error'
-              });
-              return;
-            }
+    // Switch to results tab
+    resultsTab.click();
 
-            // Display comparison results with chart
-            let resultsHtml = `
-            <div class="text-left mb-4">
-              <p>Comparison of different models across metrics:</p>
-            </div>
-            <div class="mb-4">
-              <img src="${data.chart_url}" alt="Model Comparison Chart" class="max-w-full h-auto">
-            </div>
-          `;
+    fetch("/compare_models", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Hide loading indicator
+        evaluationLoadingDiv.classList.add("hidden");
 
-            Swal.fire({
-              title: 'Model Comparison',
-              html: resultsHtml,
-              width: 800,
-              icon: 'info'
-            });
-          })
-          .catch(error => {
-            console.error("Comparison error:", error);
-            Swal.fire({
-              title: 'Comparison Failed',
-              text: 'An error occurred during model comparison',
-              icon: 'error'
-            });
+        if (data.error) {
+          Swal.fire({
+            title: 'Comparison Error',
+            text: data.error,
+            icon: 'error'
           });
+          noResultsDiv.classList.remove("hidden");
+          return;
+        }
+
+        // Update comparison UI
+        updateModelComparison(data);
+
+        // Show comparison container
+        comparisonContainerDiv.classList.remove("hidden");
+      })
+      .catch(error => {
+        console.error("Comparison error:", error);
+        evaluationLoadingDiv.classList.add("hidden");
+        noResultsDiv.classList.remove("hidden");
+
+        Swal.fire({
+          title: 'Comparison Failed',
+          text: 'An error occurred during model comparison',
+          icon: 'error'
+        });
+      });
+  });
+
+  // Function to update evaluation results UI
+  function updateEvaluationResults(data) {
+    // Update metadata
+    document.getElementById("result-model").textContent = data.model;
+    document.getElementById("result-examples").textContent = data.num_examples;
+    document.getElementById("result-method").textContent = data.evaluation_method;
+    document.getElementById("result-timestamp").textContent = data.timestamp;
+
+    // Update metrics
+    const metrics = ["faithfulness", "answer_relevancy", "context_recall", "context_precision", "overall_score"];
+    metrics.forEach(metric => {
+      const element = document.getElementById(`metric-${metric}`);
+      if (element && data.results[metric] !== undefined) {
+        element.textContent = (data.results[metric] * 100).toFixed(1) + "%";
       }
     });
-  });
+
+    // Create/update the chart
+    const ctx = document.getElementById('metrics-chart').getContext('2d');
+
+    // Destroy previous chart if it exists
+    if (metricsChart) {
+      metricsChart.destroy();
+    }
+
+    // Create metrics data for the chart
+    const chartMetrics = ["faithfulness", "answer_relevancy", "context_recall", "context_precision"];
+    const chartData = chartMetrics.map(metric => data.results[metric] || 0);
+
+    metricsChart = new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['Faithfulness', 'Answer Relevancy', 'Context Recall', 'Context Precision'],
+        datasets: [{
+          label: 'Metrics',
+          data: chartData,
+          fill: true,
+          backgroundColor: 'rgba(79, 70, 229, 0.2)',
+          borderColor: 'rgb(79, 70, 229)',
+          pointBackgroundColor: 'rgb(79, 70, 229)',
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: 'rgb(79, 70, 229)'
+        }]
+      },
+      options: {
+        scales: {
+          r: {
+            angleLines: {
+              display: true
+            },
+            suggestedMin: 0,
+            suggestedMax: 1
+          }
+        }
+      }
+    });
+  }
+
+  // Function to update model comparison UI
+  function updateModelComparison(data) {
+    const ctx = document.getElementById('comparison-chart').getContext('2d');
+
+    // Destroy previous chart if it exists
+    if (comparisonChart) {
+      comparisonChart.destroy();
+    }
+
+    // Extract data for the chart
+    const comparisonData = data.comparison;
+    const models = Object.keys(comparisonData);
+    const metrics = Object.keys(comparisonData[models[0]]).filter(key => key !== 'error');
+
+    // Generate datasets for each metric
+    const datasets = metrics.map((metric, index) => {
+      // Generate a color based on the index
+      const hue = (index * 137) % 360;
+      const color = `hsl(${hue}, 70%, 60%)`;
+
+      return {
+        label: metric,
+        data: models.map(model => comparisonData[model][metric] || 0),
+        backgroundColor: `hsla(${hue}, 70%, 60%, 0.7)`,
+        borderColor: color,
+        borderWidth: 1
+      };
+    });
+
+    comparisonChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: models,
+        datasets: datasets
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 1
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Model Comparison'
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false
+          }
+        }
+      }
+    });
+
+    // If there's a chart URL, show it in an image
+    if (data.chart_url) {
+      const chartImg = document.createElement('img');
+      chartImg.src = data.chart_url;
+      chartImg.alt = 'Model Comparison Chart';
+      chartImg.className = 'w-full h-auto mt-8';
+
+      // Append the image
+      document.getElementById('comparison-container').appendChild(chartImg);
+    }
+  }
 
   // Clear chat functionality
   clearChatBtn.addEventListener("click", function () {
